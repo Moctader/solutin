@@ -1,0 +1,34 @@
+//Define the used version of proto
+syntax = "proto3";
+
+//Define a message to hold the features input by the client
+message Features {
+    float MSSubClass     = 1 ;
+    float LotArea        = 2 ;
+    float YearBuilt      = 3 ;
+    float TotRmsAbvGrd   = 4 ;
+    float GarageCars     = 5 ;
+    float GrLivArea      = 6 ;
+    float OverallQual    = 7 ;
+}
+//Define a message to hold the predicted price
+message Prediction {
+    float salePrice      = 1 ;
+    
+}
+
+message TrainingStatus {
+  double mse = 1;
+  double rmse = 2;
+  double r_squared = 3;
+  double adjusted_r_squared = 4;
+  string status_text = 5;
+}
+
+//Define the service
+service Predict {
+    rpc predict_sale_price(Features) returns (Prediction);
+    rpc regressor_metrics(Features) returns (TrainingStatus);
+    rpc get_metrics_metadata(TrainingStatus) returns(TrainingStatus);
+
+}

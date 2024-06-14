@@ -1,0 +1,31 @@
+//Define the used version of proto
+syntax = "proto3";
+
+message Empty {
+
+}
+
+//Define a message to hold the features input by the client
+message Features {
+    float MSSubClass     = 1 ;
+    float LotArea        = 2 ;
+    float YearBuilt      = 3 ;
+    float TotRmsAbvGrd   = 4 ;
+    float GarageCars     = 5 ;
+    float GrLivArea      = 6 ;
+    float OverallQual    = 7 ;
+}
+
+//To extract dataset features
+message DatasetFeatues{
+  string datasetname = 1;
+  string description = 2;
+  string size = 3;
+  string DOI_ID = 4;
+}
+
+//Define the service
+service Databroker {
+    rpc hppdatabroker(Empty) returns (Features);
+    rpc get_dataset_metadata(Empty) returns(DatasetFeatues);
+}

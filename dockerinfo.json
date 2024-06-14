@@ -1,0 +1,1 @@
+{"docker_info_list":[{"container_name":"hppdatabroker1","ip_address":"hppdatabroker1","port":"8556"},{"container_name":"hppmodel1","ip_address":"hppmodel1","port":"8556"},{"container_name":"orchestrator","ip_address":"orchestrator","port":"8061"}]}
